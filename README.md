@@ -1,6 +1,6 @@
 # Legged_gym environment for Unitree H1
 
-Legged gym implementation of unitree H1 locomotion environment in IssacLab, including similar robot settings and reward function implementation
+Legged gym implementation of unitree H1 locomotion environment in IssacLab, including similar robot settings and reward function implementation.
 
 ## Install
 
