@@ -231,4 +231,4 @@ class BaseTask():
         if self.headless == False:
             print('command vx',self.commands[self.lookat_id, 0].item(), 'command heading', self.commands[self.lookat_id, 3].item())
             ori = self.get_body_orientation(return_yaw=True)
-            print('base_lin_vel_x', self.root_states[self.lookat_id, 7].item(), 'base_heading', ori[self.lookat_id, 2].item())
+            print('base_lin_vel_x', self.base_lin_vel[self.lookat_id, 0].item(), 'base_heading', ori[self.lookat_id, 2].item())
