@@ -16,10 +16,10 @@ from legged_gym.envs.base.base_task import BaseTask
 from legged_gym.utils.terrain import Terrain
 from legged_gym.utils.math import quat_apply_yaw, wrap_to_pi, torch_rand_sqrt_float, euler_from_quat
 from legged_gym.utils.helpers import class_to_dict
-from .h1_config import H1Cfg
+from .h1_flat_config import H1FlatCfg
 
-class H1(BaseTask):
-    def __init__(self, cfg: H1Cfg, sim_params, physics_engine, sim_device, headless):
+class H1Flat(BaseTask):
+    def __init__(self, cfg: H1FlatCfg, sim_params, physics_engine, sim_device, headless):
         """ Parses the provided config file,
             calls create_sim() (which creates, simulation, terrain and environments),
             initilizes pytorch buffers used during training

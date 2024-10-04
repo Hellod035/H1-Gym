@@ -30,10 +30,13 @@
 
 from legged_gym import LEGGED_GYM_ROOT_DIR, LEGGED_GYM_ENVS_DIR
 from .base.legged_robot import LeggedRobot
-from .h1.h1_config import H1Cfg, H1CfgPPO
-from .h1.h1 import H1
+from .h1.h1_flat_config import H1FlatCfg, H1FlatCfgPPO
+from .h1.h1_flat import H1Flat
+from .h1.h1_rough import H1Rough
+from .h1.h1_rough_config import H1RoughCfg, H1RoughCfgPPO
 import os
 
 from legged_gym.utils.task_registry import task_registry
 
-task_registry.register( "h1", H1, H1Cfg(), H1CfgPPO() )
+task_registry.register( "h1_flat", H1Flat, H1FlatCfg(), H1FlatCfgPPO() )
+task_registry.register( "h1_rough", H1Rough, H1RoughCfg(), H1RoughCfgPPO() )

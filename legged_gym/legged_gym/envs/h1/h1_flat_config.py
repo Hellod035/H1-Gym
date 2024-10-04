@@ -1,6 +1,6 @@
 from legged_gym.envs.base.base_config import BaseConfig
 
-class H1Cfg(BaseConfig):
+class H1FlatCfg(BaseConfig):
     class env:
         num_envs = 4096
         num_observations = 66
@@ -204,7 +204,7 @@ class H1Cfg(BaseConfig):
             default_buffer_size_multiplier = 5
             contact_collection = 2 # 0: never, 1: last sub-step, 2: all sub-steps (default=2)
 
-class H1CfgPPO(BaseConfig):
+class H1FlatCfgPPO(BaseConfig):
     seed = 1
     runner_class_name = 'OnPolicyRunner'
     class policy:
@@ -240,7 +240,7 @@ class H1CfgPPO(BaseConfig):
 
         # logging
         save_interval = 50 # check for potential saves every this many iterations
-        experiment_name = 'h1'
+        experiment_name = 'h1_flat'
         run_name = ''
         # load and resume
         resume = False

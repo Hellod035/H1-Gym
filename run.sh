@@ -2,5 +2,9 @@ cd ~/humanoid/legged_gym
 conda activate humanoid
 tensorboard --logdir .
 
-python legged_gym/scripts/train.py --headless
-python legged_gym/scripts/play.py --load_run 0001-locomotion-mlp --checkpoint 1000
+python legged_gym/scripts/train.py --task h1_flat --headless
+python legged_gym/scripts/play.py --task h1_flat --load_run xxxx --checkpoint 1000
+
+
+python legged_gym/scripts/train.py --task h1_rough --headless
+python legged_gym/scripts/play.py --task h1_rough --load_run xxxx --checkpoint 1000
