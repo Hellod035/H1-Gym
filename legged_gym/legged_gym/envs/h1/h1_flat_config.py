@@ -148,7 +148,8 @@ class H1FlatCfg(BaseConfig):
             collision = -1.0
             orientation = -1.5
             dof_pos_limits = -1.0
-            dof_error = -0.2        
+            dof_error = -0.2
+            fly = -0.5
 
         only_positive_rewards = False # if true negative total rewards are clipped at zero (avoids early termination problems)
         tracking_sigma = 0.25 # tracking reward = exp(-error^2/sigma)

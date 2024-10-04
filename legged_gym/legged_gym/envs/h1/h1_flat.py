@@ -932,3 +932,6 @@ class H1Flat(BaseTask):
     def _reward_energy(self):
         rew = torch.norm(torch.abs(self.torques * self.dof_vel), dim=-1)
         return rew
+    
+    def _reward_fly(self):
+        return self.contact_filt.sum(dim=1) == 0.0

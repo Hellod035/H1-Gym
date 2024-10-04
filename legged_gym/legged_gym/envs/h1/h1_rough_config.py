@@ -8,6 +8,10 @@ class H1RoughCfg(H1FlatCfg):
         curriculum = True
         selected = False # select a unique terrain type and pass all arguments
 
+    class rewards(H1FlatCfg.rewards):
+        class scales(H1FlatCfg.rewards.scales):
+            lin_vel_z = 0.0
+
 
 class H1RoughCfgPPO(H1FlatCfgPPO):
     class runner(H1FlatCfgPPO.runner):
