@@ -142,7 +142,7 @@ class H1FlatCfg(BaseConfig):
             lin_vel_z = -1.0
             dof_acc =  -1.25e-7
             action_rate = -0.005
-            feet_air_time_positive_biped = 0.25
+            feet_air_time_positive_biped = 0.4
             feet_slide = -0.25
             stumble = -1.0
             collision = -1.0

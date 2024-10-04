@@ -888,7 +888,7 @@ class H1Flat(BaseTask):
         in_mode_time = torch.where(in_contact, self.feet_ground_time, self.feet_air_time)
         single_stance = torch.sum(in_contact.int(), dim=1) == 1
         reward = torch.min(torch.where(single_stance.unsqueeze(-1), in_mode_time, 0.0), dim=1)[0]
-        reward = torch.clamp(reward, max=0.4)
+        reward = torch.clamp(reward, max=0.45)
         # no reward for zero command
         reward *= torch.norm(self.commands[:, :2], dim=1) > 0.1
         return reward
