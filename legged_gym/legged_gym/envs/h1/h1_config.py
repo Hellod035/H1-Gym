@@ -43,7 +43,7 @@ class H1Cfg(BaseConfig):
         heading_command = True # if true: compute ang vel command from heading error
         standing_events = 0.02 # probability of a zero command
         class ranges:
-            lin_vel_x = [-0.5, 1.5] # min max [m/s]
+            lin_vel_x = [-0.6, 1.5] # min max [m/s]
             lin_vel_y = [0.0, 0.0]   # min max [m/s]
             ang_vel_yaw = [-1, 1]    # min max [rad/s]
             heading = [-3.14, 3.14]
@@ -146,7 +146,7 @@ class H1Cfg(BaseConfig):
             feet_slide = -0.25
             stumble = -1.0
             collision = -1.0
-            orientation = -1.0
+            orientation = -1.5
             dof_pos_limits = -1.0
             dof_error = -0.2        
 

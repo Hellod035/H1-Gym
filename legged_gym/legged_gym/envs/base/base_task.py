@@ -229,4 +229,6 @@ class BaseTask():
                 self.lookat_vec = cam_trans - look_at_pos
                 
         if self.headless == False:
-            print('vx',self.commands[self.lookat_id, 0].item(), 'heading', self.commands[self.lookat_id, 3].item())
+            print('command vx',self.commands[self.lookat_id, 0].item(), 'command heading', self.commands[self.lookat_id, 3].item())
+            ori = self.get_body_orientation(return_yaw=True)
+            print('base_lin_vel_x', self.root_states[self.lookat_id, 7].item(), 'base_heading', ori[self.lookat_id, 2].item())
