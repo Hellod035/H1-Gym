@@ -857,6 +857,12 @@ class H1Flat(BaseTask):
         out_of_limits = -(self.dof_pos - self.dof_pos_limits[:, 0]).clip(max=0.) # lower limit
         out_of_limits += (self.dof_pos - self.dof_pos_limits[:, 1]).clip(min=0.)
         return torch.sum(out_of_limits, dim=1)
+    
+    def _reward_dof_pos_limits_feet(self):
+        # Penalize dof positions too close to the limit
+        out_of_limits = -(self.dof_pos[:,self.feet_indices] - self.dof_pos_limits[self.feet_indices, 0]).clip(max=0.) # lower limit
+        out_of_limits += (self.dof_pos[:,self.feet_indices] - self.dof_pos_limits[self.feet_indices, 1]).clip(min=0.)
+        return torch.sum(out_of_limits, dim=1)
 
     def _reward_dof_vel_limits(self):
         # Penalize dof velocities too close to the limit
@@ -869,7 +875,8 @@ class H1Flat(BaseTask):
 
     def _reward_dof_error(self):
         # Penalize dof positions too far from the default position
-        return torch.sum(torch.abs(self.dof_pos[:, [0,1,5,6,10,11,12,13,14,15,16,17,18]] - self.default_dof_pos[:, [0,1,5,6,10,11,12,13,14,15,16,17,18]]), dim=1)
+        return torch.sum(torch.abs(self.dof_pos[:, [0,1,5,6,11,12,13,14,15,16,17,18]] - self.default_dof_pos[:, [0,1,5,6,11,12,13,14,15,16,17,18]]), dim=1) \
+            + 0.5 * torch.sum(torch.abs(self.dof_pos[:, 10] - self.default_dof_pos[:, 10]))
 
     def _reward_tracking_lin_vel(self):
         # Tracking of linear velocity commands (xy axes)
