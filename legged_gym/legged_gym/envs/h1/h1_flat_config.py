@@ -142,11 +142,11 @@ class H1FlatCfg(BaseConfig):
             lin_vel_z = -1.0
             dof_acc =  -1.25e-7
             action_rate = -0.005
-            feet_air_time_positive_biped = 0.4
+            feet_air_time_positive_biped = 0.3
             feet_slide = -0.25
             stumble = -1.0
             collision = -1.0
-            orientation = -1.5
+            orientation = -3
             dof_pos_limits = -1.0
             dof_error = -0.2
             fly = -0.5
@@ -240,7 +240,7 @@ class H1FlatCfgPPO(BaseConfig):
         max_iterations = 3000 # number of policy updates
 
         # logging
-        save_interval = 50 # check for potential saves every this many iterations
+        save_interval = 200 # check for potential saves every this many iterations
         experiment_name = 'h1_flat'
         run_name = ''
         # load and resume
