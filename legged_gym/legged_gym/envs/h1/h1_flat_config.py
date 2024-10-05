@@ -158,6 +158,7 @@ class H1FlatCfg(BaseConfig):
         soft_torque_limit = 0.9
         base_height_target = 1.
         max_contact_force = 100. # forces above this value are penalized
+        feet_air_time_threshold = 0.45
 
     class normalization:
         class obs_scales:
