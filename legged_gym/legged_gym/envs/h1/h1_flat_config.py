@@ -146,7 +146,7 @@ class H1FlatCfg(BaseConfig):
             feet_slide = -0.25
             stumble = -1.0
             collision = -1.0
-            orientation = -3
+            orientation = -1.5
             dof_pos_limits = -1.0
             dof_error = -0.2
             fly = -0.5

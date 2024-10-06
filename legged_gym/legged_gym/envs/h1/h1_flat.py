@@ -813,7 +813,7 @@ class H1Flat(BaseTask):
     #------------ reward functions----------------
     def _reward_lin_vel_z(self):
         # Penalize z axis base linear velocity
-        return torch.square(self.base_lin_vel[:, 2])
+        return torch.square(self.base_lin_vel[:, 2]) * (self.episode_length_buf*self.dt > 0.2)
     
     def _reward_ang_vel_xy(self):
         # Penalize xy axes base angular velocity
@@ -858,6 +858,14 @@ class H1Flat(BaseTask):
         out_of_limits += (self.dof_pos - self.dof_pos_limits[:, 1]).clip(min=0.)
         return torch.sum(out_of_limits, dim=1)
     
+    
+    def _reward_dof_pos_limits_feet(self):
+        # Penalize dof positions too close to the limit
+        out_of_limits = -(self.dof_pos[:,self.feet_indices] - self.dof_pos_limits[self.feet_indices, 0]).clip(max=0.) # lower limit
+        out_of_limits += (self.dof_pos[:,self.feet_indices] - self.dof_pos_limits[self.feet_indices, 1]).clip(min=0.)
+        return torch.sum(out_of_limits, dim=1)
+
+
     def _reward_dof_pos_limits_feet(self):
         # Penalize dof positions too close to the limit
         out_of_limits = -(self.dof_pos[:,self.feet_indices] - self.dof_pos_limits[self.feet_indices, 0]).clip(max=0.) # lower limit
@@ -875,8 +883,7 @@ class H1Flat(BaseTask):
 
     def _reward_dof_error(self):
         # Penalize dof positions too far from the default position
-        return torch.sum(torch.abs(self.dof_pos[:, [0,1,5,6,11,12,13,14,15,16,17,18]] - self.default_dof_pos[:, [0,1,5,6,11,12,13,14,15,16,17,18]]), dim=1) \
-            + 0.5 * torch.sum(torch.abs(self.dof_pos[:, 10] - self.default_dof_pos[:, 10]))
+        return torch.sum(torch.abs(self.dof_pos[:, [0,1,5,6,10,11,12,13,14,15,16,17,18]] - self.default_dof_pos[:, [0,1,5,6,10,11,12,13,14,15,16,17,18]]), dim=1)
 
     def _reward_tracking_lin_vel(self):
         # Tracking of linear velocity commands (xy axes)
@@ -941,4 +948,4 @@ class H1Flat(BaseTask):
         return rew
     
     def _reward_fly(self):
-        return self.contact_filt.sum(dim=1) == 0.0
+        return self.contact_filt.sum(dim=1) == 0.0 * (self.episode_length_buf*self.dt > 0.2)

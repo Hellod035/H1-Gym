@@ -11,9 +11,10 @@ class H1RoughCfg(H1FlatCfg):
     class rewards(H1FlatCfg.rewards):
         class scales(H1FlatCfg.rewards.scales):
             lin_vel_z = 0.0
-            feet_air_time_positive_biped = 0.25
+            # feet_air_time_positive_biped = 0.25
+            fly = -2.0
         
-        feet_air_time_threshold = 0.4
+        # feet_air_time_threshold = 0.4
 
 
 class H1RoughCfgPPO(H1FlatCfgPPO):
