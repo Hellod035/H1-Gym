@@ -79,12 +79,12 @@ class H1FlatCfg(BaseConfig):
     class control:
         control_type = 'P' # P: position, V: velocity, T: torques
         # PD Drive parameters:
-        stiffness = {'hip_yaw': 200,
-                     'hip_roll': 200,
+        stiffness = {'hip_yaw': 150,
+                     'hip_roll': 150,
                      'hip_pitch': 200,
                      'knee': 200,
-                     'ankle': 40,
-                     'torso': 300,
+                     'ankle': 20,
+                     'torso': 200,
                      'shoulder': 40,
                      "elbow":40,
                      } # [N*m/rad]
@@ -94,8 +94,8 @@ class H1FlatCfg(BaseConfig):
                      'knee': 5,
                      'ankle': 4,
                      'torso': 5,
-                     'shoulder': 2,
-                     "elbow":2,
+                     'shoulder': 10,
+                     "elbow":10,
                      } # [N*m*s/rad]
         # action scale: target angle = actionScale * action + defaultAngle
         action_scale = 0.5
