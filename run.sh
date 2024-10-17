@@ -1,5 +1,5 @@
-cd ~/humanoid/legged_gym
-conda activate humanoid
+cd ~/projects/H1-Gym/legged_gym
+conda activate h1gym
 tensorboard --logdir .
 
 python legged_gym/scripts/train.py --task h1_flat --headless

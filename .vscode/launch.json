@@ -31,29 +31,6 @@
             ],
             "console": "integratedTerminal",
             "justMyCode": false
-        },
-        {
-            "name": "Train h1_rough",
-            "type": "debugpy",
-            "request": "launch",
-            "program": "${workspaceFolder}/legged_gym/legged_gym/scripts/train.py",
-            "args": [
-                "--task", "h1_rough",
-                "--run_name", "debug",
-                // "--headless",
-                "--num_envs", "1"
-            ],
-            "console": "integratedTerminal",
-            "justMyCode": false
-        },
-        {
-            "name": "Play h1_rough",
-            "type": "debugpy",
-            "request": "launch",
-            "program": "${workspaceFolder}/legged_gym/legged_gym/scripts/play.py",
-            "args": [
-                "--task", "h1_rough",
-            ],
         }
     ]
 }

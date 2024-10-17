@@ -4,7 +4,7 @@ class H1FlatCfg(BaseConfig):
     class env:
         num_envs = 4096
         num_observations = 66
-        num_privileged_obs = 258 # if not None a priviledge_obs_buf will be returned by step() (critic obs for assymetric training). None is returned otherwise 
+        num_privileged_obs = 71 # if not None a priviledge_obs_buf will be returned by step() (critic obs for assymetric training). None is returned otherwise 
         num_actions = 19
         env_spacing = 3.  # not used with heightfields/trimeshes 
         send_timeouts = True # send time out information to the algorithm
@@ -69,11 +69,11 @@ class H1FlatCfg(BaseConfig):
            'left_shoulder_pitch_joint' : 0.28, 
            'left_shoulder_roll_joint' : 0, 
            'left_shoulder_yaw_joint' : 0.,
-           'left_elbow_joint'  : 0.52,
+           'left_elbow_joint'  : -0.2,
            'right_shoulder_pitch_joint' : 0.28,
            'right_shoulder_roll_joint' : 0.0,
            'right_shoulder_yaw_joint' : 0.0,
-           'right_elbow_joint' : 0.0,
+           'right_elbow_joint' : -0.2,
         }
 
     class control:
@@ -90,10 +90,10 @@ class H1FlatCfg(BaseConfig):
                      } # [N*m/rad]
         damping = {  'hip_yaw': 5,
                      'hip_roll': 5,
-                     'hip_pitch': 10,
-                     'knee': 10,
-                     'ankle': 2,
-                     'torso': 6,
+                     'hip_pitch': 5,
+                     'knee': 5,
+                     'ankle': 4,
+                     'torso': 5,
                      'shoulder': 2,
                      "elbow":2,
                      } # [N*m*s/rad]
@@ -148,7 +148,7 @@ class H1FlatCfg(BaseConfig):
             collision = -1.0
             orientation = -1.5
             dof_pos_limits = -1.0
-            dof_error = -0.2
+            dof_error = -0.4
             fly = -0.5
 
         only_positive_rewards = False # if true negative total rewards are clipped at zero (avoids early termination problems)
