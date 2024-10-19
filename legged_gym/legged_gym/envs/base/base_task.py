@@ -117,6 +117,8 @@ class BaseTask():
                 self.viewer, gymapi.KEY_A, "left_turn")
             self.gym.subscribe_viewer_keyboard_event(
                 self.viewer, gymapi.KEY_D, "right_turn")
+            self.gym.subscribe_viewer_keyboard_event(
+                self.viewer, gymapi.KEY_R, "reset")
 
         # free camera
         self.free_cam = False
@@ -188,6 +190,8 @@ class BaseTask():
                     if evt.action == "right_turn" and evt.value > 0:
                         self.commands[self.lookat_id, 3] += 0.25
                         self.commands[self.lookat_id, 3] = torch.clip(self.commands[self.lookat_id, 3], self.command_ranges["heading"][0], self.command_ranges["heading"][1])
+                    if evt.action == "reset" and evt.value > 0:
+                        self.reset()
 
                 if evt.action == "free_cam" and evt.value > 0:
                     self.free_cam = not self.free_cam

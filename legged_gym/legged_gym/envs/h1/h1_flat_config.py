@@ -94,8 +94,8 @@ class H1FlatCfg(BaseConfig):
                      'knee': 5,
                      'ankle': 4,
                      'torso': 5,
-                     'shoulder': 10,
-                     "elbow":10,
+                     'shoulder': 5,
+                     "elbow":5,
                      } # [N*m*s/rad]
         # action scale: target angle = actionScale * action + defaultAngle
         action_scale = 0.5
@@ -150,6 +150,7 @@ class H1FlatCfg(BaseConfig):
             dof_pos_limits = -1.0
             dof_error = -0.4
             fly = -0.5
+            feet_force = -3e-3
 
         only_positive_rewards = False # if true negative total rewards are clipped at zero (avoids early termination problems)
         tracking_sigma = 0.25 # tracking reward = exp(-error^2/sigma)

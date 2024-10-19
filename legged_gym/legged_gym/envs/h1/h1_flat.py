@@ -949,3 +949,9 @@ class H1Flat(BaseTask):
     
     def _reward_fly(self):
         return self.contact_filt.sum(dim=1) == 0.0 * (self.episode_length_buf*self.dt > 0.2)
+    
+    def _reward_feet_force(self):
+        rew = torch.norm(self.contact_forces[:, self.feet_indices, 2], dim=-1)
+        rew[rew < 500] = 0
+        rew[rew > 500] -= 500
+        return rew
