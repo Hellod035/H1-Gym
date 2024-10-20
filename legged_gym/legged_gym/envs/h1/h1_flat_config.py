@@ -49,7 +49,7 @@ class H1FlatCfg(BaseConfig):
             heading = [-3.14, 3.14]
 
     class init_state:
-        pos = [0.0, 0.0, 1.05] # x,y,z [m]
+        pos = [0.0, 0.0, 1.01] # x,y,z [m]
         randomize_rotation = True
         rot = [0.0, 0.0, 0.0, 1.0] # x,y,z,w [quat]
         lin_vel = [0.0, 0.0, 0.0]  # x,y,z [m/s]
@@ -57,48 +57,48 @@ class H1FlatCfg(BaseConfig):
         default_joint_angles = { # = target angles [rad] when action = 0.0
            'left_hip_yaw_joint' : 0. ,   
            'left_hip_roll_joint' : 0,               
-           'left_hip_pitch_joint' : -0.28,         
-           'left_knee_joint' : 0.79,       
-           'left_ankle_joint' : -0.52,     
+           'left_hip_pitch_joint' : -0.4,         
+           'left_knee_joint' : 0.8,       
+           'left_ankle_joint' : -0.4,     
            'right_hip_yaw_joint' : 0., 
            'right_hip_roll_joint' : 0, 
-           'right_hip_pitch_joint' : -0.28,                                       
-           'right_knee_joint' : 0.79,                                             
-           'right_ankle_joint' : -0.52,                                     
+           'right_hip_pitch_joint' : -0.4,                                       
+           'right_knee_joint' : 0.8,                                             
+           'right_ankle_joint' : -0.4,                                     
            'torso_joint' : 0., 
-           'left_shoulder_pitch_joint' : 0.28, 
+           'left_shoulder_pitch_joint' : 0., 
            'left_shoulder_roll_joint' : 0, 
            'left_shoulder_yaw_joint' : 0.,
-           'left_elbow_joint'  : -0.2,
-           'right_shoulder_pitch_joint' : 0.28,
+           'left_elbow_joint'  : 0.,
+           'right_shoulder_pitch_joint' : 0.,
            'right_shoulder_roll_joint' : 0.0,
-           'right_shoulder_yaw_joint' : 0.0,
-           'right_elbow_joint' : -0.2,
+           'right_shoulder_yaw_joint' : 0.,
+           'right_elbow_joint' : 0.,
         }
 
     class control:
         control_type = 'P' # P: position, V: velocity, T: torques
         # PD Drive parameters:
-        stiffness = {'hip_yaw': 150,
-                     'hip_roll': 150,
+        stiffness = {'hip_yaw': 200,
+                     'hip_roll': 200,
                      'hip_pitch': 200,
-                     'knee': 200,
-                     'ankle': 20,
-                     'torso': 200,
-                     'shoulder': 40,
-                     "elbow":40,
-                     } # [N*m/rad]
+                     'knee': 300,
+                     'ankle': 40,
+                     'torso': 300,
+                     'shoulder': 100,
+                     "elbow":100,
+                     }  # [N*m/rad]
         damping = {  'hip_yaw': 5,
                      'hip_roll': 5,
                      'hip_pitch': 5,
-                     'knee': 5,
-                     'ankle': 4,
-                     'torso': 5,
-                     'shoulder': 5,
-                     "elbow":5,
-                     } # [N*m*s/rad]
+                     'knee': 6,
+                     'ankle': 2,
+                     'torso': 6,
+                     'shoulder': 2,
+                     "elbow":2,
+                     }  # [N*m/rad]  # [N*m*s/rad]
         # action scale: target angle = actionScale * action + defaultAngle
-        action_scale = 0.5
+        action_scale = 0.25
         # decimation: Number of control action updates @ sim DT per policy DT
         decimation = 4
 
@@ -108,6 +108,7 @@ class H1FlatCfg(BaseConfig):
         foot_name = "ankle" # name of the feet bodies, used to index body state and contact force tensors
         penalize_contacts_on = ["shoulder", "elbow", "hip", "knee"]
         terminate_after_contacts_on = ["torso_link"]
+        torso_name = "torso_link"
         disable_gravity = False
         collapse_fixed_joints = True # merge bodies connected by fixed joints. Specific fixed joints can be kept by adding " <... dont_collapse="true">
         fix_base_link = False # fixe the base of the robot
@@ -126,28 +127,32 @@ class H1FlatCfg(BaseConfig):
 
     class domain_rand:
         randomize_friction = True
-        friction_range = [0.5, 1.25]
+        friction_range = [0.5, 1.5]
         randomize_base_mass = True
         added_mass_range = [-1., 5.]
+        randomize_base_com = True
+        added_com_range = [-0.07, 0.07]
         push_robots = True
         push_interval_s = 8
-        max_push_vel_xy = 0.7
+        max_push_vel_xy = 0.5
 
     class rewards:
         class scales:
             termination = -200.0
+            base_height = -10.0
             tracking_lin_vel = 1.0
             tracking_ang_vel = 1.0
             ang_vel_xy = -0.05
             lin_vel_z = -1.0
             dof_acc =  -1.25e-7
             action_rate = -0.005
-            feet_air_time_positive_biped = 0.3
+            # feet_air_time_positive_biped = 0.3
+            feet_air_time = 1.0
             feet_slide = -0.25
             stumble = -1.0
-            collision = -1.0
+            collision = -10.0
             orientation = -1.5
-            dof_pos_limits = -1.0
+            dof_pos_limits = -10.0
             dof_error = -0.4
             fly = -0.5
             feet_force = -3e-3
@@ -157,9 +162,9 @@ class H1FlatCfg(BaseConfig):
         soft_dof_pos_limit = 0.9 # percentage of urdf limits, values above this limit are penalized
         soft_dof_vel_limit = 0.9
         soft_torque_limit = 0.9
-        base_height_target = 1.
+        base_height_target = 0.98
         max_contact_force = 100. # forces above this value are penalized
-        feet_air_time_threshold = 0.45
+        feet_air_time_threshold = 0.4
 
     class normalization:
         class obs_scales:
@@ -178,8 +183,8 @@ class H1FlatCfg(BaseConfig):
             dof_pos = 0.01
             dof_vel = 1.5
             lin_vel = 0.1
-            ang_vel = 0.2
-            gravity = 0.05
+            ang_vel = 0.3
+            gravity = 0.1
             height_measurements = 0.1
 
     # viewer camera:
@@ -239,7 +244,7 @@ class H1FlatCfgPPO(BaseConfig):
         policy_class_name = 'ActorCritic'
         algorithm_class_name = 'PPO'
         num_steps_per_env = 24 # per iteration
-        max_iterations = 3000 # number of policy updates
+        max_iterations = 5000 # number of policy updates
 
         # logging
         save_interval = 200 # check for potential saves every this many iterations

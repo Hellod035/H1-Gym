@@ -28,6 +28,8 @@
             "program": "${workspaceFolder}/legged_gym/legged_gym/scripts/play.py",
             "args": [
                 "--task", "h1_flat",
+                // "--load_run", "Oct20_21-11-18_",
+                // "--checkpoint", "2000"
             ],
             "console": "integratedTerminal",
             "justMyCode": false

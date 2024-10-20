@@ -314,6 +314,10 @@ class H1Flat(BaseTask):
         if self.cfg.domain_rand.randomize_base_mass:
             rng = self.cfg.domain_rand.added_mass_range
             props[0].mass += np.random.uniform(rng[0], rng[1])
+        if self.cfg.domain_rand.randomize_base_com:
+            rng_com = self.cfg.domain_rand.added_com_range
+            rand_com = np.random.uniform(rng_com[0], rng_com[1], size=(3, ))
+            props[self.torso_idx].com += gymapi.Vec3(*rand_com)
         return props
     
     def _post_physics_step_callback(self):
@@ -650,6 +654,7 @@ class H1Flat(BaseTask):
         self.dof_names = self.gym.get_asset_dof_names(robot_asset)
         self.num_bodies = len(body_names)
         self.num_dofs = len(self.dof_names)
+        self.torso_idx = self.gym.find_asset_rigid_body_index(robot_asset, self.cfg.asset.torso_name)
         feet_names = [s for s in body_names if self.cfg.asset.foot_name in s]
         penalized_contact_names = []
         for name in self.cfg.asset.penalize_contacts_on:
@@ -813,7 +818,7 @@ class H1Flat(BaseTask):
     #------------ reward functions----------------
     def _reward_lin_vel_z(self):
         # Penalize z axis base linear velocity
-        return torch.square(self.base_lin_vel[:, 2]) * (self.episode_length_buf*self.dt > 0.2)
+        return torch.square(self.base_lin_vel[:, 2])
     
     def _reward_ang_vel_xy(self):
         # Penalize xy axes base angular velocity
@@ -858,12 +863,7 @@ class H1Flat(BaseTask):
         out_of_limits += (self.dof_pos - self.dof_pos_limits[:, 1]).clip(min=0.)
         return torch.sum(out_of_limits, dim=1)
     
-    
-    def _reward_dof_pos_limits_feet(self):
-        # Penalize dof positions too close to the limit
-        out_of_limits = -(self.dof_pos[:,self.feet_indices] - self.dof_pos_limits[self.feet_indices, 0]).clip(max=0.) # lower limit
-        out_of_limits += (self.dof_pos[:,self.feet_indices] - self.dof_pos_limits[self.feet_indices, 1]).clip(min=0.)
-        return torch.sum(out_of_limits, dim=1)
+
 
 
     def _reward_dof_pos_limits_feet(self):
@@ -894,6 +894,14 @@ class H1Flat(BaseTask):
         # Tracking of angular velocity commands (yaw) 
         ang_vel_error = torch.square(self.commands[:, 2] - self.base_ang_vel[:, 2])
         return torch.exp(-ang_vel_error/self.cfg.rewards.tracking_sigma)
+    
+    def _reward_feet_air_time(self):
+        # Reward long steps
+        # Need to filter the contacts because the contact reporting of PhysX is unreliable on meshes
+        first_contact = (self.feet_air_time > 0.) * self.contact_filt
+        rew_airTime = torch.sum((self.feet_air_time - 0.5) * first_contact, dim=1) # reward only on first contact with the ground
+        rew_airTime *= torch.norm(self.commands[:, :2], dim=1) > 0.1 #no reward for zero command
+        return rew_airTime
 
     def _reward_feet_air_time_positive_biped(self):
         # Reward long steps
