@@ -883,7 +883,8 @@ class H1Flat(BaseTask):
 
     def _reward_dof_error(self):
         # Penalize dof positions too far from the default position
-        return torch.sum(torch.abs(self.dof_pos[:, [0,1,5,6,10,11,12,13,14,15,16,17,18]] - self.default_dof_pos[:, [0,1,5,6,10,11,12,13,14,15,16,17,18]]), dim=1)
+        return 4 * torch.sum(torch.abs(self.dof_pos[:, [0,1,5,6,10,11,12,13,14,15,16,17,18]] - self.default_dof_pos[:, [0,1,5,6,10,11,12,13,14,15,16,17,18]]), dim=1) \
+            + torch.sum(torch.abs(self.dof_pos[:, [2,3,4,7,8,9]] - self.default_dof_pos[:, [2,3,4,7,8,9]]), dim=1)
 
     def _reward_tracking_lin_vel(self):
         # Tracking of linear velocity commands (xy axes)
@@ -962,4 +963,10 @@ class H1Flat(BaseTask):
         rew = torch.norm(self.contact_forces[:, self.feet_indices, 2], dim=-1)
         rew[rew < 500] = 0
         rew[rew > 500] -= 500
+        return rew
+    
+    def _reward_feet_height(self):
+        feet_height = self.rigid_body_states[:, self.feet_indices, 2]
+        rew = torch.clamp(torch.norm(feet_height, dim=-1) - 0.2, max=0)
+        rew *= torch.norm(self.commands[:, :2], dim=1) > 0.1
         return rew

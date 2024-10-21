@@ -129,31 +129,32 @@ class H1FlatCfg(BaseConfig):
         randomize_friction = True
         friction_range = [0.5, 1.5]
         randomize_base_mass = True
-        added_mass_range = [-1., 5.]
+        added_mass_range = [-5., 5.]
         randomize_base_com = True
         added_com_range = [-0.07, 0.07]
         push_robots = True
         push_interval_s = 8
-        max_push_vel_xy = 0.5
+        max_push_vel_xy = 0.6
 
     class rewards:
         class scales:
             termination = -200.0
             base_height = -10.0
             tracking_lin_vel = 1.0
-            tracking_ang_vel = 1.0
-            ang_vel_xy = -0.05
+            tracking_ang_vel = 0.5
             lin_vel_z = -1.0
+            ang_vel_xy = -0.1
             dof_acc =  -1.25e-7
-            action_rate = -0.005
-            # feet_air_time_positive_biped = 0.3
-            feet_air_time = 1.0
+            action_rate = -0.01
+            energy = -1e-3
+            feet_air_time_positive_biped = 0.3
+            feet_height = 2.0
             feet_slide = -0.25
             stumble = -1.0
             collision = -10.0
             orientation = -1.5
             dof_pos_limits = -10.0
-            dof_error = -0.4
+            dof_error = -0.1
             fly = -0.5
             feet_force = -3e-3
 
@@ -164,7 +165,7 @@ class H1FlatCfg(BaseConfig):
         soft_torque_limit = 0.9
         base_height_target = 0.98
         max_contact_force = 100. # forces above this value are penalized
-        feet_air_time_threshold = 0.4
+        feet_air_time_threshold = 0.45
 
     class normalization:
         class obs_scales:
