@@ -1,6 +1,5 @@
 from legged_gym.envs.base.base_config import BaseConfig
 
-
 class H1FlatCfg(BaseConfig):
     class env:
         num_envs = 4096
@@ -149,7 +148,7 @@ class H1FlatCfg(BaseConfig):
             action_rate = -0.01
             energy = -1e-3
             feet_air_time_positive_biped = 0.3
-            feet_height = 2.0
+            # feet_height = 2.0
             feet_slide = -0.25
             stumble = -1.0
             collision = -10.0
