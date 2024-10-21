@@ -1,5 +1,6 @@
 from legged_gym.envs.base.base_config import BaseConfig
 
+
 class H1FlatCfg(BaseConfig):
     class env:
         num_envs = 4096
