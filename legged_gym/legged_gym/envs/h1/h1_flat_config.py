@@ -20,7 +20,6 @@ class H1FlatCfg(BaseConfig):
         dynamic_friction = 1.0
         restitution = 0.
         # rough terrain only:
-        measure_heights = True
         measured_points_x = [-0.8, -0.7, -0.6, -0.5, -0.4, -0.3, -0.2, -0.1, 0., 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8] # 1mx1.6m rectangle (without center line)
         measured_points_y = [-0.5, -0.4, -0.3, -0.2, -0.1, 0., 0.1, 0.2, 0.3, 0.4, 0.5]
         selected = True # select a unique terrain type and pass all arguments
@@ -135,6 +134,8 @@ class H1FlatCfg(BaseConfig):
         push_robots = True
         push_interval_s = 8
         max_push_vel_xy = 0.6
+        randomize_ctrl_delay = True
+        ctrl_delay_rate = 0.01
 
     class rewards:
         class scales:
@@ -145,14 +146,14 @@ class H1FlatCfg(BaseConfig):
             lin_vel_z = -1.0
             ang_vel_xy = -0.1
             dof_acc =  -1.25e-7
-            action_rate = -0.01
+            action_rate = -0.015
             energy = -1e-3
             feet_air_time_positive_biped = 0.3
             # feet_height = 2.0
             feet_slide = -0.25
             stumble = -1.0
             collision = -10.0
-            orientation = -1.5
+            orientation = -2.0
             dof_pos_limits = -10.0
             dof_error = -0.1
             fly = -0.5

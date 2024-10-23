@@ -52,6 +52,10 @@ class H1Flat(BaseTask):
         Args:
             actions (torch.Tensor): Tensor of shape (num_envs, num_actions_per_env)
         """
+        if self.cfg.domain_rand.randomize_ctrl_delay:
+            delay_mask = torch.rand(self.num_envs, device=self.device) < self.cfg.domain_rand.ctrl_delay_rate
+            actions = torch.where(delay_mask.unsqueeze(1), self.last_actions, actions)
+
         clip_actions = self.cfg.normalization.clip_actions
         self.actions = torch.clip(actions, -clip_actions, clip_actions).to(self.device)
         # step physics and render each frame
