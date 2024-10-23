@@ -28,7 +28,7 @@
             "program": "${workspaceFolder}/legged_gym/legged_gym/scripts/play.py",
             "args": [
                 "--task", "h1_flat",
-                // "--load_run", "Oct20_21-11-18_",
+                // "--load_run", "Oct21_18-47-57_",
                 // "--checkpoint", "2000"
             ],
             "console": "integratedTerminal",
