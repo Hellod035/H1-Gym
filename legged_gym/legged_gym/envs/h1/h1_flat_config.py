@@ -136,13 +136,17 @@ class H1FlatCfg(BaseConfig):
         max_push_vel_xy = 0.6
         randomize_ctrl_delay = True
         ctrl_delay_rate = 0.01
+        randomize_gravity = True
+        gravity_rand_interval_s = 10
+        gravity_range = [-0.1, 0.1]
+        randomize_motor = True
+        motor_strength_range = [0.8, 1.2]
 
     class rewards:
         class scales:
             termination = -200.0
-            base_height = -10.0
             tracking_lin_vel = 1.0
-            tracking_ang_vel = 0.5
+            tracking_ang_vel = 1.0
             lin_vel_z = -1.0
             ang_vel_xy = -0.1
             dof_acc =  -1.25e-7
@@ -157,7 +161,7 @@ class H1FlatCfg(BaseConfig):
             dof_pos_limits = -10.0
             dof_error = -0.1
             fly = -0.5
-            feet_force = -3e-3
+            feet_force = -0.01
 
         only_positive_rewards = False # if true negative total rewards are clipped at zero (avoids early termination problems)
         tracking_sigma = 0.25 # tracking reward = exp(-error^2/sigma)
@@ -219,8 +223,8 @@ class H1FlatCfgPPO(BaseConfig):
     runner_class_name = 'OnPolicyRunner'
     class policy:
         init_noise_std = 1.0
-        actor_hidden_dims = [512, 256, 128]
-        critic_hidden_dims = [512, 256, 128]
+        actor_hidden_dims = [128, 128, 128]
+        critic_hidden_dims = [128, 128, 128]
         activation = 'elu' # can be elu, relu, selu, crelu, lrelu, tanh, sigmoid
         # only for 'ActorCriticRecurrent':
         # rnn_type = 'lstm'

@@ -29,7 +29,7 @@
             "args": [
                 "--task", "h1_flat",
                 // "--load_run", "Oct21_18-47-57_",
-                // "--checkpoint", "2000"
+                // "--checkpoint", "1000"
             ],
             "console": "integratedTerminal",
             "justMyCode": false

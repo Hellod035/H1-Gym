@@ -48,10 +48,13 @@ def play(args):
     env_cfg.terrain.curriculum = False
     env_cfg.noise.add_noise = False
     env_cfg.domain_rand.randomize_friction = False
+    env_cfg.domain_rand.randomize_base_mass = False
+    env_cfg.domain_rand.randomize_base_com = False
     env_cfg.domain_rand.push_robots = False
     env_cfg.domain_rand.randomize_ctrl_delay = False
-    # env_cfg.commands.ranges.lin_vel_x = [1.0, 1.0]
-    # env_cfg.commands.ranges.heading = [0.0, 0.0]
+    env_cfg.domain_rand.randomize_gravity = False
+    env_cfg.domain_rand.randomize_motor = False
+
     env_cfg.commands.resampling_time = 9999
     env_cfg.env.episode_length_s = 9999
 

@@ -43,7 +43,7 @@ Stephen Brawner (brawner@gmail.com)
           filename="../meshes/pelvis.STL" />
       </geometry>
       <material
-        name="dark">
+        name="">
         <color
           rgba="0.1 0.1 0.1 1" />
       </material>
@@ -80,7 +80,7 @@ Stephen Brawner (brawner@gmail.com)
           filename="../meshes/left_hip_yaw_link.STL" />
       </geometry>
       <material
-        name="dark">
+        name="">
         <color
           rgba="0.1 0.1 0.1 1" />
       </material>
@@ -135,7 +135,7 @@ Stephen Brawner (brawner@gmail.com)
           filename="../meshes/left_hip_roll_link.STL" />
       </geometry>
       <material
-        name="dark">
+        name="">
         <color
           rgba="0.1 0.1 0.1 1" />
       </material>
@@ -190,7 +190,7 @@ Stephen Brawner (brawner@gmail.com)
           filename="../meshes/left_hip_pitch_link.STL" />
       </geometry>
       <material
-        name="dark">
+        name="">
         <color
           rgba="0.1 0.1 0.1 1" />
       </material>
@@ -245,7 +245,7 @@ Stephen Brawner (brawner@gmail.com)
           filename="../meshes/left_knee_link.STL" />
       </geometry>
       <material
-        name="dark">
+        name="">
         <color
           rgba="0.1 0.1 0.1 1" />
       </material>
@@ -300,7 +300,7 @@ Stephen Brawner (brawner@gmail.com)
           filename="../meshes/left_ankle_link.STL" />
       </geometry>
       <material
-        name="dark">
+        name="">
         <color
           rgba="0.1 0.1 0.1 1" />
       </material>
@@ -355,7 +355,7 @@ Stephen Brawner (brawner@gmail.com)
           filename="../meshes/right_hip_yaw_link.STL" />
       </geometry>
       <material
-        name="dark">
+        name="">
         <color
           rgba="0.1 0.1 0.1 1" />
       </material>
@@ -410,7 +410,7 @@ Stephen Brawner (brawner@gmail.com)
           filename="../meshes/right_hip_roll_link.STL" />
       </geometry>
       <material
-        name="dark">
+        name="">
         <color
           rgba="0.1 0.1 0.1 1" />
       </material>
@@ -465,7 +465,7 @@ Stephen Brawner (brawner@gmail.com)
           filename="../meshes/right_hip_pitch_link.STL" />
       </geometry>
       <material
-        name="dark">
+        name="">
         <color
           rgba="0.1 0.1 0.1 1" />
       </material>
@@ -520,7 +520,7 @@ Stephen Brawner (brawner@gmail.com)
           filename="../meshes/right_knee_link.STL" />
       </geometry>
       <material
-        name="dark">
+        name="">
         <color
           rgba="0.1 0.1 0.1 1" />
       </material>
@@ -575,7 +575,7 @@ Stephen Brawner (brawner@gmail.com)
           filename="../meshes/right_ankle_link.STL" />
       </geometry>
       <material
-        name="dark">
+        name="">
         <color
           rgba="0.1 0.1 0.1 1" />
       </material>
@@ -630,7 +630,7 @@ Stephen Brawner (brawner@gmail.com)
           filename="../meshes/torso_link.STL" />
       </geometry>
       <material
-        name="dark">
+        name="">
         <color
           rgba="0.1 0.1 0.1 1" />
       </material>
@@ -685,7 +685,7 @@ Stephen Brawner (brawner@gmail.com)
           filename="../meshes/left_shoulder_pitch_link.STL" />
       </geometry>
       <material
-        name="dark">
+        name="">
         <color
           rgba="0.1 0.1 0.1 1" />
       </material>
@@ -740,7 +740,7 @@ Stephen Brawner (brawner@gmail.com)
           filename="../meshes/left_shoulder_roll_link.STL" />
       </geometry>
       <material
-        name="dark">
+        name="">
         <color
           rgba="0.1 0.1 0.1 1" />
       </material>
@@ -795,7 +795,7 @@ Stephen Brawner (brawner@gmail.com)
           filename="../meshes/left_shoulder_yaw_link.STL" />
       </geometry>
       <material
-        name="dark">
+        name="">
         <color
           rgba="0.1 0.1 0.1 1" />
       </material>
@@ -847,10 +847,10 @@ Stephen Brawner (brawner@gmail.com)
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="../meshes/left_elbow_link.STL" />
+          filename="../meshes/left_elbow_link_ball_hand.STL" />
       </geometry>
       <material
-        name="dark">
+        name="">
         <color
           rgba="0.1 0.1 0.1 1" />
       </material>
@@ -905,7 +905,7 @@ Stephen Brawner (brawner@gmail.com)
           filename="../meshes/right_shoulder_pitch_link.STL" />
       </geometry>
       <material
-        name="dark">
+        name="">
         <color
           rgba="0.1 0.1 0.1 1" />
       </material>
@@ -960,7 +960,7 @@ Stephen Brawner (brawner@gmail.com)
           filename="../meshes/right_shoulder_roll_link.STL" />
       </geometry>
       <material
-        name="dark">
+        name="">
         <color
           rgba="0.1 0.1 0.1 1" />
       </material>
@@ -1015,7 +1015,7 @@ Stephen Brawner (brawner@gmail.com)
           filename="../meshes/right_shoulder_yaw_link.STL" />
       </geometry>
       <material
-        name="dark">
+        name="">
         <color
           rgba="0.1 0.1 0.1 1" />
       </material>
@@ -1067,10 +1067,10 @@ Stephen Brawner (brawner@gmail.com)
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="../meshes/right_elbow_link.STL" />
+          filename="../meshes/right_elbow_link_ball_hand.STL" />
       </geometry>
       <material
-        name="dark">
+        name="">
         <color
           rgba="0.1 0.1 0.1 1" />
       </material>
@@ -1099,169 +1099,6 @@ Stephen Brawner (brawner@gmail.com)
       upper="2.61"
       effort="18"
       velocity="20" />
-  </joint>
-  <link name="imu_link"></link>
-  <joint
-    name="imu_joint"
-    type="fixed">
-    <origin
-      xyz="-0.04452 -0.01891 0.27756"
-      rpy="0 0 0" />
-    <parent
-      link="torso_link" />
-    <child
-      link="imu_link" />
-  </joint>
-  <link
-    name="logo_link">
-    <visual>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="../meshes/logo_link.STL" />
-      </geometry>
-      <material
-        name="white">
-        <color
-          rgba="1 1 1 1" />
-      </material>
-    </visual>
-
-  </link>
-  <joint
-    name="logo_joint"
-    type="fixed">
-    <origin
-      xyz="0 0 0"
-      rpy="0 0 0" />
-    <parent
-      link="torso_link" />
-    <child
-      link="logo_link" />
-    <axis
-      xyz="0 0 0" />
-  </joint>
-
-
-
-  <link
-    name="d435_left_imager_link">
-    <visual>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <sphere
-          radius="0.001" />
-      </geometry>
-      <material
-        name="white">
-        <color
-          rgba="1 1 1 1" />
-      </material>
-    </visual>
-    <collision>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <sphere
-          radius="0.001" />
-      </geometry>
-    </collision>
-  </link>
-  <joint
-    name="d435_left_imager_joint"
-    type="fixed">
-    <origin
-      xyz="0.10848474394 0.0175 0.69317107367"
-      rpy="-2.45735 0 -1.57080" />
-    <parent
-      link="torso_link" />
-    <child
-      link="d435_left_imager_link" />
-    <axis
-      xyz="0 0 0" />
-  </joint>
-  <link
-    name="d435_rgb_module_link">
-    <visual>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <sphere
-          radius="0.001" />
-      </geometry>
-      <material
-        name="white">
-        <color
-          rgba="1 1 1 1" />
-      </material>
-    </visual>
-    <collision>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <sphere
-          radius="0.001" />
-      </geometry>
-    </collision>
-  </link>
-  <joint
-    name="d435_rgb_module_joint"
-    type="fixed">
-    <origin
-      xyz="0.10848474394 0.0325 0.69317107367"
-      rpy="-2.45735 0 -1.57080" />
-    <parent
-      link="torso_link" />
-    <child
-      link="d435_rgb_module_link" />
-    <axis
-      xyz="0 0 0" />
-  </joint>
-  <link
-    name="mid360_link">
-    <visual>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <sphere
-          radius="0.001" />
-      </geometry>
-      <material
-        name="white">
-        <color
-          rgba="1 1 1 1" />
-      </material>
-    </visual>
-    <collision>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <sphere
-          radius="0.001" />
-      </geometry>
-    </collision>
-  </link>
-  <joint
-    name="mid360_joint"
-    type="fixed">
-    <origin
-      xyz="0.04729990180 0 0.67492878653"
-      rpy="0 0.243124 0" />
-    <parent
-      link="torso_link" />
-    <child
-      link="mid360_link" />
-    <axis
-      xyz="0 0 0" />
   </joint>
 
 
